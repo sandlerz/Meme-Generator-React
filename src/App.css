@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+.App{
+  min-height: 550px;
+  background-color: white;
+  width: 550px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header{
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  height: 65px;
+  width: 100%;
+  padding: 20px;
+  background-image: linear-gradient(90deg, #672280 1.18%, #8E25B3 62.73%, #A626D3 100%);
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header div img {
+  display: block;
+  max-width: 32px;
+  height: auto;
+}
+
+header div h1 {
+  font-family: 'Karla';
+  font-size: 20.7482px;
+  letter-spacing: -0.1em;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header p {
+  font-size: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.meme{
+  padding: 36px;
+}
+
+.meme-text{
+  display: grid;
+  grid-template: 35px 40px / 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.meme-text input{
+  width: 230px;
+  border-radius: 5px;
+  border: #D5D4D8 1px solid;
+  font-size: 15px;
+  text-indent: 10px;
+}
+
+.meme-text input:focus{
+  outline: #711F8D 1px solid;
+}
+
+.meme-button{
+  grid-column: 1 / -1;
+  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-family: 'Karla';
+  font-size: 16px;
+  letter-spacing: -0.05em;
+  cursor: pointer;
+}
+
+.meme-button:active{
+  transform: scale(0.99);
+  transition: transform 0.1s;
+}
+
+.meme-button:focus{
+  outline: 5px solid #b4cbf6;
+}
+
+.meme-img{
+  height: auto;
+  display: grid;
+  place-content: center;
+}
+
+.meme-img img{
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
