@@ -1,16 +1,26 @@
-import React from "react";
-import memesData from "../memesData";
+import React, { useState, useEffect } from "react";
 
 export default function Meme() {
-  const [meme, setMeme] = React.useState({
+  const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
     randomImage: "",
-    allMemeImages: memesData,
+    allMemes: [],
   });
 
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((response) => response.json())
+      .then((data) =>
+        setMeme((prevMeme) => ({
+          ...prevMeme,
+          allMemes: data.data.memes,
+        }))
+      );
+  }, []);
+
   const handleClick = () => {
-    const memesArray = memesData.data.memes;
+    const memesArray = meme.allMemes;
     const randomNum = Math.floor(Math.random() * memesArray.length);
     const url = memesArray[randomNum].url;
     setMeme((prevMeme) => ({
@@ -20,25 +30,25 @@ export default function Meme() {
   };
 
   const handleChange = (event) => {
-    const {name, value} = event.target
-    setMeme(prevState => ({
+    const { name, value } = event.target;
+    setMeme((prevState) => ({
       ...prevState,
-      [name]: value
-    }))
+      [name]: value,
+    }));
   };
 
   return (
     <main className="meme">
       <div className="meme-text">
-        <input 
-          type="text" 
+        <input
+          type="text"
           placeholder="Top text"
           name="topText"
           onChange={handleChange}
           value={meme.topText}
         />
-        <input 
-          type="text" 
+        <input
+          type="text"
           placeholder="Bottom text"
           name="bottomText"
           onChange={handleChange}
