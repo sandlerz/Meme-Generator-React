@@ -9,6 +9,9 @@ export default function Meme() {
   });
 
   useEffect(() => {
+
+    /* fetch request */
+
     fetch("https://api.imgflip.com/get_memes")
       .then((response) => response.json())
       .then((data) =>
@@ -17,6 +20,20 @@ export default function Meme() {
           allMemes: data.data.memes,
         }))
       );
+
+    /* async await request */
+
+    // const getData = async() => {
+    //   const res = await fetch("https://api.imgflip.com/get_memes")
+    //   const data = await res.json()
+    //   setMeme((prevMeme) => ({
+    //     ...prevMeme,
+    //     allMemes: data.data.memes,
+    //   }))
+    // }
+    // 
+    // getData()
+    
   }, []);
 
   const handleClick = () => {
